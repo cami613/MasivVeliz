@@ -15,16 +15,16 @@ namespace TestMasivian.Controllers
         {
             this.rouletteService = rouletteService;
         }
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            return Ok(rouletteService.GetAll());
+        }
         [HttpPost]
         public IActionResult NewRulette()
         {
             Roulette roulette = rouletteService.create();
             return Ok(roulette);
-        }
-        [HttpGet]
-        public IActionResult GetAll()
-        {
-            return Ok(rouletteService.GetAll());
         }
         [HttpPut("{id}/open")]
         public IActionResult Open([FromRoute(Name = "id")] string id)
